@@ -4,70 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>랜덤 기출문제 풀이 프로그램</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 600px;
-      margin: 30px auto;
-      padding: 20px;
-      background-color: #f4f6f8;
-    }
-    .quiz-card {
-      background: white;
-      padding: 24px;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .options {
-      margin-top: 15px;
-    }
-    .option-btn {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 8px;
-      text-align: left;
-      background: #f8f9fa;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .option-btn:hover {
-      background: #e9ecef;
-    }
-    .option-btn.correct {
-      background-color: #d4edda;
-      border-color: #c3e6cb;
-      color: #155724;
-    }
-    .option-btn.wrong {
-      background-color: #f8d7da;
-      border-color: #f5c6cb;
-      color: #721c24;
-    }
-    .btn {
-      margin-top: 15px;
-      padding: 10px 16px;
-      background: #007bff;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .btn:disabled {
-      background: #ccc;
-      cursor: not-allowed;
-    }
-    .explanation {
-      margin-top: 15px;
-      padding: 12px;
-      background-color: #e2e3e5;
-      border-radius: 6px;
-    }
-    .hidden {
-      display: none;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -87,34 +24,8 @@
     </div>
   </div>
 
+  <script src="data.js"></script>
   <script>
-    // 1. 기출문제 데이터베이스
-    const quizData = [
-      {
-        question: "1. HTML의 약자로 옳은 것은?",
-        options: [
-          "HyperText Markup Language",
-          "HighText Machine Language",
-          "HyperText Marking Language",
-          "Hyperlink Text Markup Language"
-        ],
-        answer: 0,
-        explanation: "HTML은 HyperText Markup Language의 약자입니다."
-      },
-      {
-        question: "2. 자바스크립트에서 변수를 선언하는 키워드가 아닌 것은?",
-        options: ["var", "let", "const", "define"],
-        answer: 3,
-        explanation: "define은 C언어 등에서 전처리기로 쓰이며, JS 변수 선언 키워드가 아닙니다."
-      },
-      {
-        question: "3. CSS에서 배경색을 지정하는 속성은?",
-        options: ["color", "background-color", "font-weight", "border-color"],
-        answer: 1,
-        explanation: "background-color 속성을 통해 요소의 배경색을 설정합니다."
-      }
-    ];
-
     let currentQuestions = [];
     let currentIndex = 0;
     let score = 0;
@@ -148,7 +59,8 @@
         `문제 ${currentIndex + 1} / ${currentQuestions.length}`;
       
       // 질문 텍스트 출력
-      document.getElementById("question-text").textContent = current.question;
+      document.getElementById("question-text").textContent = 
+    	`${currentIndex + 1}. ${current.question}`;
       
       // 보기 생성
       const optionsContainer = document.getElementById("options-container");
