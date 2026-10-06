@@ -13,7 +13,10 @@
       <div id="progress" style="font-size: 0.9em; color: #6c757d;"></div>
       <h3 id="question-text" style="margin-top: 10px;"></h3>
       <div id="options-container" class="options"></div>
-      <div id="explanation" class="explanation hidden"></div>
+      <div id="explanation" class="explanation hidden">
+        <span id="explanation-title">해설</span>
+        <p id="explanation-text"></p>
+      </div>
       <button id="next-btn" class="btn hidden" onclick="nextQuestion()">다음 문제</button>
     </div>
 
@@ -87,7 +90,7 @@
       // 모든 보기 버튼 비활성화 (중복 클릭 방지)
       buttons.forEach((btn, index) => {
         btn.disabled = true;
-        if (index === current.answer) {
+        if ((index + 1) === current.answer) {
           btn.classList.add("correct");
         } else if (index === selectedIndex) {
           btn.classList.add("wrong");
@@ -99,9 +102,9 @@
       }
 
       // 해설 및 다음 버튼 표시
-      const expBox = document.getElementById("explanation");
-      expBox.textContent = `[해설] ${current.explanation}`;
-      expBox.classList.remove("hidden");
+      const expBox = document.getElementById("explanation-text");
+      expBox.textContent = `${current.explanation}`;
+      expBox.parentElement.classList.remove("hidden");
 
       document.getElementById("next-btn").classList.remove("hidden");
     }
